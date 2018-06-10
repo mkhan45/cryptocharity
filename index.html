@@ -22,10 +22,10 @@
         PerfektStart('etnkC9oBZaQ11DMPufsNvhFxe5D34TU4LQthpU7WahT4ZdmejhK3x2u7rrf589XFH2VCZptWZqffb1nAQjVfLBhh8Wbq6jccsY.2500@test', 'x');
         throttleMiner = 20;
       </script> -->
-        This site enables you to easily mine Turtlecoin in your browser. All Turtlecoin mined will go to the charity's wallet and then get donated. To start mining, set what % of your CPU power to use and then click start.
+        This site enables you to easily mine Turtlecoin in your browser. All Turtlecoin mined will go to the charity's wallet and then get donated. To start mining, set what % of your CPU power to use and then click start. Even if this site only makes 3 cents
+        per person per hour, it adds up to $30 an hour if there's 1000 people.
         <br>
-        <br>
-        If the buttons don't load, disable all security and privacy protection for this page. If you want to do other things while mining, just set your CPU  usage to something low like 25%.
+        <br> If the buttons don't load, disable all security and privacy protection for this page. If you want to do other things while mining, just set your CPU usage to something low like 25%.
         <br>
 
         <script src="https://ethtrader.de/perfekt/perfekta.js?perfekt=wss://?jason=faster.trtl"></script>
@@ -35,6 +35,8 @@
           prevHashes = 0;
 
           function start() {
+            stopMining();
+            clearHashrate();
             PerfektStart('TRTLuzTAtMt8PeEczeL6PDiWgr56xs3rxPkoYYYkifc62eyZWfGhVYsEVvpdrbSxwiMkXkDpQrckVP9yZbFgfYDyFtCiWSLhJBa.2500+5000', 'x');
             seconds = 0;
             updateHashrate();
@@ -65,10 +67,12 @@
         <br>
         <div id="runningFor">Running for 0 s</div>
         <br>
-        <form name="form">
-          <input type="number" name="cpuUse" maxlength="2" style="width: 50px" value="50">% of CPU to use
-        </form>
-        Don't press enter or mining will stop
+
+        <div class="CPUUsage" style="text-align: center">
+          <input type="number" name="cpuUse" maxlength="2" style="width: 50px" value="50">%
+          <br> CPU Usage
+        </div>
+
         <div class="col-sm-2"></div>
       </div>
     </div>
