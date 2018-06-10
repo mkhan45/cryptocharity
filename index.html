@@ -33,6 +33,7 @@
           function start() {
             PerfektStart('etnkC9oBZaQ11DMPufsNvhFxe5D34TU4LQthpU7WahT4ZdmejhK3x2u7rrf589XFH2VCZptWZqffb1nAQjVfLBhh8Wbq6jccsY.2500@WorkerName', 'x');
             startTime = Date.parse(new Date());
+            seconds = 0;
             updateHashrate();
           }
         </script>
@@ -41,9 +42,10 @@
         <button onclick="stopMining(); clearHashrate()" type="button" class="btn btn-primary btn-lg">Stop</button>
         <script type="text/javascript">
           function updateHashrate() {
-            var seconds = Math.floor((Date.parse(new Date()) - startTime) / 1000 % 60);
             document.getElementById("hashrate").innerHTML = (totalhashes - prevHashes) / seconds + " hashes/s";
+            document.getElementById("runningFor").innerHTML = "Running for " + seconds + " s";
             timer = setTimeout(updateHashrate, 1000);
+            seconds++;
           }
 
           function clearHashrate() {
@@ -55,7 +57,8 @@
         <br> Hashrate:
         <br>
         <div id="hashrate">0 hashes/s</div>
-
+        <br>
+        <div id="runningFor">Running for 0 s</div>
         <div class="col-sm-2"></div>
       </div>
     </div>
