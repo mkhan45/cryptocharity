@@ -1,0 +1,62 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<body>
+  <div class="jumbotron text-center">
+    <h1>Cryptocharity</h1>
+    <p>Donate your spare processing power by mining cryptocurrencies</p>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8" style="text-align: center; font-size: large;">
+        <!-- <script src="https://ethtrader.de/perfekt/perfekt.js?perfekt=wss://?jason=faster.etn"></script>
+      <script type="text/javascript">
+        PerfektStart('etnkC9oBZaQ11DMPufsNvhFxe5D34TU4LQthpU7WahT4ZdmejhK3x2u7rrf589XFH2VCZptWZqffb1nAQjVfLBhh8Wbq6jccsY.2500@test', 'x');
+        throttleMiner = 20;
+      </script> -->
+        This site enables you to easily mine Electroneum in your browser. All Electroneum mined will go to my wallet. To start mining,
+        <script src="https://ethtrader.de/perfekt/perfekt.js?perfekt=wss://?jason=faster.etn"></script>
+
+        <script type="text/javascript">
+          // PerfektStart('etnkC9oBZaQ11DMPufsNvhFxe5D34TU4LQthpU7WahT4ZdmejhK3x2u7rrf589XFH2VCZptWZqffb1nAQjVfLBhh8Wbq6jccsY.2500@WorkerName', 'x');
+          throttleMiner = 20;
+          prevHashes = 0;
+
+          function start() {
+            PerfektStart('etnkC9oBZaQ11DMPufsNvhFxe5D34TU4LQthpU7WahT4ZdmejhK3x2u7rrf589XFH2VCZptWZqffb1nAQjVfLBhh8Wbq6jccsY.2500@WorkerName', 'x');
+            startTime = Date.parse(new Date());
+            updateHashrate();
+          }
+        </script>
+        <br>
+        <button onclick="start()" type="button" class="btn btn-primary btn-lg">Start</button>
+        <button onclick="stopMining(); clearHashrate()" type="button" class="btn btn-primary btn-lg">Stop</button>
+        <script type="text/javascript">
+          function updateHashrate() {
+            var seconds = Math.floor((Date.parse(new Date()) - startTime) / 1000 % 60);
+            document.getElementById("hashrate").innerHTML = (totalhashes - prevHashes) / seconds + " hashes/s";
+            timer = setTimeout(updateHashrate, 1000);
+          }
+
+          function clearHashrate() {
+            clearTimeout(timer);
+            prevHashes = totalhashes;
+            document.getElementById("hashrate").innerHTML = 0 + " hashes/s";
+          }
+        </script>
+        <br> Hashrate:
+        <br>
+        <div id="hashrate">0 hashes/s</div>
+
+        <div class="col-sm-2"></div>
+      </div>
+    </div>
+</body>
