@@ -1,29 +1,24 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+
 
 ### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+
+This site enables you to easily mine Turtlecoin in your browser. 
+All Turtlecoin mined will go to the charity's wallet and then get donated. 
+To start mining, set what % of your CPU power to use and then click start. 
+Even if this site only makes 3 cents per person per hour, it adds up to $30 an hour if there's 1000 people. 
 
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+Just go to tinyurl.com/cryptocharity, set your CPU usage, and then click start. It will keep running as long as the tab is open so you can do other stuff.
 
-### Contribution guidelines ###
 
-* Writing tests
-* Code review
-* Other guidelines
+### Contribution Guidelines ###
+
+Email me about what you want to do
 
 ### Who do I talk to? ###
 
-* Repo owner or admin
-* Other community or team contact
+mikail.khan45@gmail.com
