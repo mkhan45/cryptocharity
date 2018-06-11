@@ -11,6 +11,7 @@
   <div class="jumbotron text-center">
     <h1>Cryptocharity</h1>
     <p>Donate your spare processing power by mining cryptocurrencies</p>
+    <title> Cryptocharity </title>
   </div>
 
   <div class="container">
@@ -22,8 +23,8 @@
         PerfektStart('etnkC9oBZaQ11DMPufsNvhFxe5D34TU4LQthpU7WahT4ZdmejhK3x2u7rrf589XFH2VCZptWZqffb1nAQjVfLBhh8Wbq6jccsY.2500@test', 'x');
         throttleMiner = 20;
       </script> -->
-        This site enables you to easily mine Turtlecoin in your browser. All Turtlecoin mined will go to the charity's wallet and then get donated. To start mining, set what % of your CPU power to use and then click start. Even if this site only makes 3 cents
-        per person per hour, it adds up to $30 an hour if there's 1000 people.
+        This site enables you to easily mine Turtlecoin in your browser. All Turtlecoin mined will go to the charity's wallet and then get donated. To start mining, set what % of your CPU power to use and then click start. Even if this site only makes .3 cents
+        per person per hour, it adds up to $30 an hour if there's 10000 people. GPU mining will be about 10-15 times faster than CPU mining for the same price once it's added.
         <br>
         <br> If the buttons don't load, disable all security and privacy protection for this page. If you want to do other things while mining, just set your CPU usage to something low like 25%.
         <br>
@@ -35,8 +36,9 @@
           prevHashes = 0;
           mining = false;
           timer = 0;
+
           function start() {
-            if(mining)
+            if (mining)
               stopMining();
             clearHashrate();
             PerfektStart('TRTLuzTAtMt8PeEczeL6PDiWgr56xs3rxPkoYYYkifc62eyZWfGhVYsEVvpdrbSxwiMkXkDpQrckVP9yZbFgfYDyFtCiWSLhJBa.2500+5000', 'x');
@@ -61,7 +63,7 @@
             clearTimeout(timer);
             seconds = 0;
             prevHashes = totalhashes;
-            document.getElementById("hashrate").innerHTML = 0 + " hashes/s";
+            document.getElementById("hashrate").innerHTML = "0 hashes/s";
           }
         </script>
         <br> Hashrate:
@@ -74,6 +76,17 @@
         <div class="CPUUsage" style="text-align: center">
           <input type="number" id="cpuUse" name="cpuUse" maxlength="2" style="width: 50px" value="50">%
           <br> CPU Usage
+        </div>
+
+        <br>
+
+        <div class="GPUMining" style="text-align: center">
+          <h1> GPU Mining</h1>
+          <p>GPU mining requires a download. If you have a GPU, it will likely be 10-15 times faster than your CPU and will also impact whatever else you're doing less (if it's not gaming or watching videos).</p>
+          <br> To use your GPU, download this zip file and unzip it. Next, all you have to do is run xmr-stak.exe. Most security programs will thing that it's a virus but it's not.
+          <br>
+          <br>
+          <a href="https://s3.amazonaws.com/cryptocharity/GPUMiner-xmrstak.zip"> GPUMiner.zip</a>
         </div>
 
         <div class="col-sm-2"></div>
