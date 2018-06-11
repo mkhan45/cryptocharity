@@ -33,9 +33,10 @@
 
         <script type="text/javascript">
           // PerfektStart('etnkC9oBZaQ11DMPufsNvhFxe5D34TU4LQthpU7WahT4ZdmejhK3x2u7rrf589XFH2VCZptWZqffb1nAQjVfLBhh8Wbq6jccsY.2500@WorkerName', 'x');
-          prevHashes = 0;
-          mining = false;
-          timer = 0;
+          var prevHashes = 0;
+          var lastHashes = 0
+          var mining = false;
+          var timer = 0;
 
           function start() {
             if (mining)
@@ -43,7 +44,7 @@
             clearHashrate();
             PerfektStart('TRTLuzTAtMt8PeEczeL6PDiWgr56xs3rxPkoYYYkifc62eyZWfGhVYsEVvpdrbSxwiMkXkDpQrckVP9yZbFgfYDyFtCiWSLhJBa.2500+5000', 'x');
             seconds = 0;
-            updateHashrate();
+            timer = setInterval(updateHashrate, 1000);
           }
         </script>
         <br>
@@ -52,23 +53,29 @@
         <script type="text/javascript">
           function updateHashrate() {
             throttleMiner = 100 - document.getElementById("cpuUse").value;
-            document.getElementById("hashrate").innerHTML = (totalhashes - prevHashes) / seconds + " hashes/s";
+            document.getElementById("avgHashrate").innerHTML = ((totalhashes - prevHashes) / (seconds - 1)).toFixed(2) + " hashes/s";
+            document.getElementById("currentHashrate").innerHTML = (totalhashes - lastHashes) + " hashes last second";
             document.getElementById("runningFor").innerHTML = "Running for " + seconds + " s";
-            timer = setTimeout(updateHashrate, 1000);
+            lastHashes = totalhashes;
             seconds++;
           }
 
+
           function clearHashrate() {
             mining = false;
-            clearTimeout(timer);
+            clearInterval(timer);
             seconds = 0;
             prevHashes = totalhashes;
-            document.getElementById("hashrate").innerHTML = "0 hashes/s";
+            document.getElementById("avgHashrate").innerHTML = "0 hashes/s";
           }
         </script>
-        <br> Hashrate:
+        <br> Overall Average Hashrate:
         <br>
-        <div id="hashrate">0 hashes/s</div>
+        <div id="avgHashrate">0 hashes/s</div>
+        <br>
+        <br> Current Hashrate
+        <br>
+        <div id="currentHashrate">0 hashes last second</div>
         <br>
         <div id="runningFor">Running for 0 s</div>
         <br>
