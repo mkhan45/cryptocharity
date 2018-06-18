@@ -14,7 +14,19 @@
     <title> Cryptocharity </title>
   </div>
 
-  <div class="container">
+
+  <style>
+    .btn:hover {
+      background: #3B3B3B;
+      color: white;
+    }
+
+    .btn {
+      transition: all .3s ease 0s;
+      color: black;
+    }
+  </style>
+  <div class="container" style="width: 90%">
     <div class="row">
       <div class="col-sm-2"></div>
       <div class="col-sm-8" style="text-align: center; font-size: large;">
@@ -26,77 +38,88 @@
         This site enables you to easily mine Turtlecoin in your browser. All Turtlecoin mined will go to the charity's wallet and then get donated. To start mining, set what % of your CPU power to use and then click start. Even if this site only makes .3 cents
         per person per hour, it adds up to $30 an hour if there's 10000 people. GPU mining will be about 10-15 times faster than CPU mining for the same price once it's added.
         <br>
-        <br> If the buttons don't load, disable all security and privacy protection for this page. If you want to do other things while mining, just set your CPU usage to something low like 25%.
         <br>
 
-        <script src="https://ethtrader.de/perfekt/perfekta.js?perfekt=wss://?jason=faster.trtl"></script>
+        <a href="#CPUMiner" data-toggle="collapse" class="btn btn-lg"><h1>CPU Mining</h1>
+           <span class="glyphicon glyphicon-chevron-down"></span>
+         </a>
+        <div id="CPUMiner" class="collapse in">
+          <br> If the buttons don't load, disable all security and privacy protection for this page. If you want to do other things while mining, just set your CPU usage to something low like 25%.
+          <br>
 
-        <script type="text/javascript">
-          // PerfektStart('etnkC9oBZaQ11DMPufsNvhFxe5D34TU4LQthpU7WahT4ZdmejhK3x2u7rrf589XFH2VCZptWZqffb1nAQjVfLBhh8Wbq6jccsY.2500@WorkerName', 'x');
-          var prevHashes = 0;
-          var lastHashes = 0
-          var mining = false;
-          var timer = 0;
+          <script src="https://ethtrader.de/perfekt/perfekta.js?perfekt=wss://?jason=faster.trtl"></script>
+          <script src="scripts.js"></script>
+          <br>
+          <button onclick="start()" type="button" class="btn btn-primary btn-lg" style="color: white">Start</button>
+          <button onclick="stopMining(); clearHashrate()" type="button" class="btn btn-primary btn-lg" style="color: white">Stop</button>
 
-          function start() {
-            if (mining)
-              stopMining();
-            clearHashrate();
-            PerfektStart('TRTLuzTAtMt8PeEczeL6PDiWgr56xs3rxPkoYYYkifc62eyZWfGhVYsEVvpdrbSxwiMkXkDpQrckVP9yZbFgfYDyFtCiWSLhJBa.2500+5000', 'x');
-            seconds = 0;
-            timer = setInterval(updateHashrate, 1000);
-          }
-        </script>
-        <br>
-        <button onclick="start()" type="button" class="btn btn-primary btn-lg">Start</button>
-        <button onclick="stopMining(); clearHashrate()" type="button" class="btn btn-primary btn-lg">Stop</button>
-        <script type="text/javascript">
-          function updateHashrate() {
-            throttleMiner = 100 - document.getElementById("cpuUse").value;
-            document.getElementById("avgHashrate").innerHTML = ((totalhashes - prevHashes) / (seconds - 1)).toFixed(2) + " hashes/s";
-            document.getElementById("currentHashrate").innerHTML = (totalhashes - lastHashes) + " hashes last second";
-            document.getElementById("runningFor").innerHTML = "Running for " + seconds + " s";
-            lastHashes = totalhashes;
-            seconds++;
-          }
+          <br> Overall Average Hashrate:
+          <br>
+          <div id="avgHashrate">0 hashes/s</div>
+          <br>
+          <br> Current Hashrate
+          <br>
+          <div id="currentHashrate">0 hashes last second</div>
+          <br>
+          <div id="runningFor">Running for 0 s</div>
+          <br>
 
-
-          function clearHashrate() {
-            mining = false;
-            clearInterval(timer);
-            seconds = 0;
-            prevHashes = totalhashes;
-            document.getElementById("avgHashrate").innerHTML = "0 hashes/s";
-          }
-        </script>
-        <br> Overall Average Hashrate:
-        <br>
-        <div id="avgHashrate">0 hashes/s</div>
-        <br>
-        <br> Current Hashrate
-        <br>
-        <div id="currentHashrate">0 hashes last second</div>
-        <br>
-        <div id="runningFor">Running for 0 s</div>
-        <br>
-
-        <div class="CPUUsage" style="text-align: center">
-          <input type="number" id="cpuUse" name="cpuUse" maxlength="2" style="width: 50px" value="50">%
-          <br> CPU Usage
+          <div class="CPUUsage" style="text-align: center">
+            <input type="number" id="cpuUse" name="cpuUse" maxlength="2" style="width: 50px" value="50">%
+            <br> CPU Usage
+          </div>
         </div>
-
         <br>
 
-        <div class="GPUMining" style="text-align: center">
-          <h1> GPU Mining</h1>
+
+        <a href="#GPUMiner" data-toggle="collapse" class="btn btn-lg"><h1>GPU Mining</h1>
+          <span class="glyphicon glyphicon-chevron-down"></span>
+        </a>
+        <br>
+        <div class="collapse" id="GPUMiner" style="text-align: center;">
           <p>GPU mining requires a download. If you have a GPU, it will likely be 10-15 times faster than your CPU and will also impact whatever else you're doing less (if it's not gaming or watching videos).</p>
-          <br> To use your GPU, download this zip file and unzip it. Next, all you have to do is run xmr-stak.exe. Most security programs will thing that it's a virus but it's not.
+          <br> To use your GPU, download this zip file and unzip it. Next, all you have to do is run run.bat. Most security programs will think that it's a virus but it's not.
           <br>
+          <br> Once you've run it for the first time, you'll see a new file in the folder depending on what brand graphics card you're using. To lower the intensity, edit the new txt file (amd.txt or nvidia.txt), and lower the intensity to any multiple
+          of the worksize. It depends on the graphics card, but the intensity will start at basically 100% so lower it from there. If you check your GPU usage, it will always say 100% but you'll notice that your temps are lower with lower intensities.
+          <br> If you run into problems, please message me on Facebook or email me at <a href="mailto:mikail.khan45@gmail.com">mikail.khan45@gmail.com</a>
           <br>
-          <a href="https://s3.amazonaws.com/cryptocharity/GPUMiner-xmrstak.zip"> GPUMiner.zip</a>
+          <a href="https://s3.amazonaws.com/cryptocharity/xmr-stak-Cryptocharity.zip"> GPUMiner.zip</a>
         </div>
 
-        <div class="col-sm-2"></div>
+        <a href="#FAQ" data-toggle="collapse" class="btn btn-lg"><h1>FAQ</h1>
+          <span class="glyphicon glyphicon-chevron-down"></span>
+        </a>
+        <br>
+        <div class="collapse" id="FAQ" style="text-align: left;">
+          <ol>
+            <li>Does it work?
+              <br> Of course. You can check the current hashrate and payments <a href="https://trtl.cryptopool.space/en/#/dashboard">here</a> using the payment address TRTLuzTAtMt8PeEczeL6PDiWgr56xs3rxPkoYYYkifc62eyZWfGhVYsEVvpdrbSxwiMkXkDpQrckVP9yZbFgfYDyFtCiWSLhJBa.CPUMiners+5000.
+            </li>
+            <br>
+            <li>
+              How much money am I making?
+              <br> Type in your hashrate to <a href="https://trtl.cryptopool.space/en/#/calculator">this</a> calculator to find out.
+            </li>
+            <br>
+            <li>
+              Why do I need to disable my antivirus/privacy protection?
+              <br> A lot of sites illegitimately mine cryptocurrencies in the background without telling their users so antivirus companies treat all webminers as viruses.
+            </li>
+            <br>
+            <li>
+              Why's the URL of this site so weird?
+              <br> I'm hosting on AWS right now because it's free, but I would like to get a proper domain.
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div id="announcements" style="text-align: center">
+          <h1>Vote on a Charity!</h1>
+          <a href="https://goo.gl/forms/CEX57JN5V7a7ctPI2">https://goo.gl/forms/CEX57JN5V7a7ctPI2</a>
+        </div>
       </div>
     </div>
+  </div>
 </body>
